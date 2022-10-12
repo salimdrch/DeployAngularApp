@@ -5,6 +5,13 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    browsers: ['Chrome', 'ChromeHeadlessCustom'],
+    customLaunchers: {
+        ChromeHeadlessCustom: {
+            base: 'ChromeHeadless',
+            flags: ['--no-sandbox', '--disable-gpu']
+        }
+    },
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
@@ -25,12 +32,9 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/my-app'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      dir: require('path').join(__dirname, './coverage'),
+      reports: ['html', 'lcovonly', 'text-summary'],
+      fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
