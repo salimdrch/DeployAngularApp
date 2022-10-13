@@ -50,6 +50,6 @@ jobs:
         #if: github.event.pull_request.merged == true
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACTION_TOKEN
           publish_dir: dist/hello-world/
           enable_jekyll: true
