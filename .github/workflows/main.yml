@@ -41,13 +41,7 @@ jobs:
       - name: List Files in Distribution Directory
         run: ls -R ./dist
         
-      # Deploy Requirements:
-      #- name: Install Deploy Requirement
-      #  run: npm run deploy-requirement 
-      
-
       - name: Deploy
-        #if: github.event.pull_request.merged == true
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.ACTION_TOKEN }}
